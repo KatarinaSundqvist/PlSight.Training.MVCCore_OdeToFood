@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCCore_OdeToFood", "MVCCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore_OdeToFood.Core", "MVCCore_OdeToFood.Core\MVCCore_OdeToFood.Core.csproj", "{353748F6-1A8D-48E1-8E3D-448FB4093F32}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCore_OdeToFood.Data", "MVCCore_OdeToFood.Data\MVCCore_OdeToFood.Data.csproj", "{A27E39A1-CD28-4052-8874-27EC988B0AC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{353748F6-1A8D-48E1-8E3D-448FB4093F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{353748F6-1A8D-48E1-8E3D-448FB4093F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{353748F6-1A8D-48E1-8E3D-448FB4093F32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27E39A1-CD28-4052-8874-27EC988B0AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27E39A1-CD28-4052-8874-27EC988B0AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27E39A1-CD28-4052-8874-27EC988B0AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27E39A1-CD28-4052-8874-27EC988B0AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

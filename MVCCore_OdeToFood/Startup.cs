@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVCCore_OdeToFood.Data;
 
 namespace MVCCore_OdeToFood {
     public class Startup {
@@ -19,6 +20,8 @@ namespace MVCCore_OdeToFood {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            // The use of singleton in this case is only suitable for development
             services.AddRazorPages();
         }
 
