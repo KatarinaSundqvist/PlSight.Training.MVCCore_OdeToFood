@@ -21,7 +21,7 @@ namespace MVCCore_OdeToFood {
                 options.UseSqlServer(Configuration.GetConnectionString("OdeToFoodDb"));
                 });
             
-            services.AddSingleton<IRestaurantData, InMemoryRestaurantData>();
+            services.AddScoped<IRestaurantData, SqlRestaurantData>();
             // The use of singleton in this case is only suitable for development
             services.AddRazorPages();
         }
