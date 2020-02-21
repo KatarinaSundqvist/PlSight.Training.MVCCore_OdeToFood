@@ -24,6 +24,7 @@ namespace MVCCore_OdeToFood {
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
             // The use of singleton in this case is only suitable for development
             services.AddRazorPages();
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +40,7 @@ namespace MVCCore_OdeToFood {
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseNodeModules();
 
             app.UseRouting();
 
@@ -46,6 +48,7 @@ namespace MVCCore_OdeToFood {
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }
