@@ -33,6 +33,10 @@ namespace MVCCore_OdeToFood.Data {
             return db.Restaurants.Find(id);
         }
 
+        public int GetCountOfRestaurants() {
+            return db.Restaurants.Count();
+        }
+
         public IEnumerable<Restaurant> GetRestaurantsByName(string name) {
             var query = from r in db.Restaurants
                         where r.Name.StartsWith(name) || string.IsNullOrEmpty(name)
