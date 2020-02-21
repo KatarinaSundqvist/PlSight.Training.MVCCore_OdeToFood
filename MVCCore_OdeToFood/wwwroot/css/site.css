@@ -80,3 +80,7 @@ body {
 .card-header {
     background-color: aquamarine;
 }
+
+img {
+    padding: 0.375rem;
+}
