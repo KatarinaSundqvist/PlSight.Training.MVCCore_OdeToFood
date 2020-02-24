@@ -10,8 +10,8 @@ namespace MVCCore_OdeToFood.Pages.Restaurants {
 
         private readonly IConfiguration config;
         private readonly IRestaurantData restaurantData;
-        
-        [BindProperty(SupportsGet =true)]
+
+        [BindProperty(SupportsGet = true)]
         public string SearchTerm { get; set; }
 
         public string Message { get; set; }

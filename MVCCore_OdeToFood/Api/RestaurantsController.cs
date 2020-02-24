@@ -1,41 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MVCCore_OdeToFood.Core;
 using MVCCore_OdeToFood.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MVCCore_OdeToFood.Api
-{
+namespace MVCCore_OdeToFood.Api {
     [Route("api/[controller]")]
     [ApiController]
-    public class RestaurantsController : ControllerBase
-    {
+    public class RestaurantsController : ControllerBase {
         private readonly OdeToFoodDbContext _context;
 
-        public RestaurantsController(OdeToFoodDbContext context)
-        {
+        public RestaurantsController(OdeToFoodDbContext context) {
             _context = context;
         }
 
         // GET: api/Restaurants
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants()
-        {
+        public async Task<ActionResult<IEnumerable<Restaurant>>> GetRestaurants() {
             return await _context.Restaurants.ToListAsync();
         }
 
         // GET: api/Restaurants/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Restaurant>> GetRestaurant(int id)
-        {
+        public async Task<ActionResult<Restaurant>> GetRestaurant(int id) {
             var restaurant = await _context.Restaurants.FindAsync(id);
 
-            if (restaurant == null)
-            {
+            if (restaurant == null) {
                 return NotFound();
             }
 
@@ -46,27 +38,21 @@ namespace MVCCore_OdeToFood.Api
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutRestaurant(int id, Restaurant restaurant)
-        {
-            if (id != restaurant.Id)
-            {
+        public async Task<IActionResult> PutRestaurant(int id, Restaurant restaurant) {
+            if (id != restaurant.Id) {
                 return BadRequest();
             }
 
             _context.Entry(restaurant).State = EntityState.Modified;
 
-            try
-            {
+            try {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RestaurantExists(id))
-                {
+            catch (DbUpdateConcurrencyException) {
+                if (!RestaurantExists(id)) {
                     return NotFound();
                 }
-                else
-                {
+                else {
                     throw;
                 }
             }
@@ -78,8 +64,7 @@ namespace MVCCore_OdeToFood.Api
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant)
-        {
+        public async Task<ActionResult<Restaurant>> PostRestaurant(Restaurant restaurant) {
             _context.Restaurants.Add(restaurant);
             await _context.SaveChangesAsync();
 
@@ -88,11 +73,9 @@ namespace MVCCore_OdeToFood.Api
 
         // DELETE: api/Restaurants/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Restaurant>> DeleteRestaurant(int id)
-        {
+        public async Task<ActionResult<Restaurant>> DeleteRestaurant(int id) {
             var restaurant = await _context.Restaurants.FindAsync(id);
-            if (restaurant == null)
-            {
+            if (restaurant == null) {
                 return NotFound();
             }
 
@@ -102,8 +85,7 @@ namespace MVCCore_OdeToFood.Api
             return restaurant;
         }
 
-        private bool RestaurantExists(int id)
-        {
+        private bool RestaurantExists(int id) {
             return _context.Restaurants.Any(e => e.Id == id);
         }
     }
