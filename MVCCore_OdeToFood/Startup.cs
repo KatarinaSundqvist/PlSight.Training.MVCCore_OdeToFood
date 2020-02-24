@@ -1,10 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVCCore_OdeToFood.Data;
+using System;
+using System.Linq;
 
 namespace MVCCore_OdeToFood {
     public class Startup {
@@ -22,21 +25,20 @@ namespace MVCCore_OdeToFood {
             });
 
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
-            // The use of singleton in this case is only suitable for development
-            services.AddRazorPages();
+             services.AddRazorPages();
             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
             else {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.Use(SayHelloMiddleWare);
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -50,6 +52,18 @@ namespace MVCCore_OdeToFood {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });
+        }
+
+        private RequestDelegate SayHelloMiddleWare(RequestDelegate next) {
+            return async ctx => {
+
+                if (ctx.Request.Path.StartsWithSegments("/hello")) {
+                    await ctx.Response.WriteAsync("Hello, World!"); 
+                }
+                else {
+                    await next(ctx);
+                }
+            };
         }
     }
 }
