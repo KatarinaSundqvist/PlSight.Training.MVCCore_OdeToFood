@@ -6,8 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVCCore_OdeToFood.Data;
-using System;
-using System.Linq;
 
 namespace MVCCore_OdeToFood {
     public class Startup {
@@ -25,7 +23,7 @@ namespace MVCCore_OdeToFood {
             });
 
             services.AddScoped<IRestaurantData, SqlRestaurantData>();
-             services.AddRazorPages();
+            services.AddRazorPages();
             services.AddControllers();
         }
 
@@ -58,7 +56,7 @@ namespace MVCCore_OdeToFood {
             return async ctx => {
 
                 if (ctx.Request.Path.StartsWithSegments("/hello")) {
-                    await ctx.Response.WriteAsync("Hello, World!"); 
+                    await ctx.Response.WriteAsync("Hello, World!");
                 }
                 else {
                     await next(ctx);
